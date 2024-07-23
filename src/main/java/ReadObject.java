@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ReadObject {
     public static void main(String[] args) {
@@ -13,20 +14,13 @@ public class ReadObject {
             fileInputStream = new FileInputStream("src/people.bin");
             objectInputStream = new ObjectInputStream(fileInputStream);
 
-            Person person1 = (Person) objectInputStream.readObject();
-            Person person2 = (Person) objectInputStream.readObject();
-            Person person3 = (Person) objectInputStream.readObject();
-            Person person4 = (Person) objectInputStream.readObject();
+            int n = objectInputStream.readInt();
 
-            people.add(person1);
-            people.add(person2);
-            people.add(person3);
-            people.add(person4);
-
-            for (Person person : people) {
-                System.out.println(person);
+            for (int i = 0; i < n; i++) {
+                people.add((Person) objectInputStream.readObject());
             }
 
+            System.out.println(Arrays.toString(people.toArray()));
 
             objectInputStream.close();
         } catch (IOException e) {
