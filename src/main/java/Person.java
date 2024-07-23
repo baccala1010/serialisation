@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public class Person implements Serializable {
     private static int id_gen = 1;
-    private int id;
+    private transient int id;
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
