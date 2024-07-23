@@ -4,8 +4,8 @@ import java.time.LocalDate;
 public class Person implements Serializable {
     private static int id_gen = 1;
     private int id;
-    private transient String firstName;
-    private transient String lastName;
+    private String firstName;
+    private String lastName;
     private LocalDate dateOfBirth;
     private boolean gender;
 

@@ -17,15 +17,9 @@ public class WriteObject {
         people.add(person3);
         people.add(person4);
 
-        FileOutputStream fileOutputStream = null;
-        ObjectOutputStream objectOutputStream = null;
-        try {
-            fileOutputStream = new FileOutputStream("src/people.bin");
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src/people.bin"))){
             objectOutputStream.writeObject(people);
-
-            objectOutputStream.close();
         } catch (IOException e) {
             System.out.println("File not found: " + e.getMessage());
         }
