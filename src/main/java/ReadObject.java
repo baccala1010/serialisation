@@ -14,13 +14,9 @@ public class ReadObject {
             fileInputStream = new FileInputStream("src/people.bin");
             objectInputStream = new ObjectInputStream(fileInputStream);
 
-            int n = objectInputStream.readInt();
+            people = (ArrayList<Person>) objectInputStream.readObject();
 
-            for (int i = 0; i < n; i++) {
-                people.add((Person) objectInputStream.readObject());
-            }
-
-            System.out.println(Arrays.toString(people.toArray()));
+            System.out.println(people);
 
             objectInputStream.close();
         } catch (IOException e) {

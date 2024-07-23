@@ -23,11 +23,7 @@ public class WriteObject {
             fileOutputStream = new FileOutputStream("src/people.bin");
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            objectOutputStream.writeInt(people.size());
-
-            for (Person person : people) {
-                objectOutputStream.writeObject(person);
-            }
+            objectOutputStream.writeObject(people);
 
             objectOutputStream.close();
         } catch (IOException e) {
